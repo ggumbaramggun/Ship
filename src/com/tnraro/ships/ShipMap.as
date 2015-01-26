@@ -18,7 +18,6 @@ import com.tnraro.parts.Tile;
 		 * @param	data Ship Design
 		 */
 		public function build(d:Object):Boolean {
-			trace(d.name);
 			for(var i:String in d.floors){
 				var f:Array = d.floors[i];
 				
@@ -33,7 +32,6 @@ import com.tnraro.parts.Tile;
 			
 			return true;
 		}
-		
 	}
 
 }

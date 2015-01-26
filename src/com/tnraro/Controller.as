@@ -13,24 +13,8 @@ import com.tnraro.ships.ShipList;
 			ships = new ShipList();
 		}
 		
-		/**
-		 * JSON data.
-		 * @param	...args
-		 */
-		public function addShips(data:String):void {
-			var ship:Object;
-			try{
-				ship = JSON.parse(data);
-			}catch(e:Error){
-				throw new ShipError('Data parse error [ships.json]', 1000);
-			}
-			
-			for each(var k:Object in ship) {
-				var s:Ship = new Ship();
-				s.build(k);
-
-				ships.push(s);
-			}
+		public function add(s:Ship):void{
+			ships.push(s);
 		}
 	}
 }
