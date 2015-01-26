@@ -18,11 +18,11 @@ BrowserHistoryUtils = {
 BrowserHistory = (function() {
     // type of browser
     var browser = {
-        ie: false,
-        ie8: false,
-        firefox: false,
-        safari: false,
-        opera: false,
+        ie: false, 
+        ie8: false, 
+        firefox: false, 
+        safari: false, 
+        opera: false, 
         version: -1
     };
 
@@ -43,7 +43,7 @@ BrowserHistory = (function() {
 
     // History maintenance (used only by Safari)
     var currentHistoryLength = -1;
-
+    
     // Flag to denote the existence of onhashchange
     var browserHasHashChange = false;
 
@@ -152,7 +152,7 @@ BrowserHistory = (function() {
 		}
 		return undefined;
 	}
-
+    
     function getPlayers() {
         var i;
         var players = [];
@@ -336,10 +336,10 @@ BrowserHistory = (function() {
                 //alert("did change: " + history.length + ", " + historyHash.length + "|" + historyHash[history.length] + "|>" + historyHash.join("|"));
                 var flexAppUrl = getHash();
                 if (browser.version < 528.16 /* Anything earlier than Safari 4.0 */)
-                {
-                    // If it did change and we're running Safari 3.x or earlier,
-                    // then we have to look the old state up in our hand-maintained
-                    // array since document.location.hash won't have changed,
+                {    
+                    // If it did change and we're running Safari 3.x or earlier, 
+                    // then we have to look the old state up in our hand-maintained 
+                    // array since document.location.hash won't have changed, 
                     // then call back into BrowserManager.
                 currentHistoryLength = history.length;
                     flexAppUrl = historyHash[currentHistoryLength];
@@ -362,8 +362,8 @@ BrowserHistory = (function() {
                 var bsl = backStack.length;
 
                 var urlActions = {
-                    back: false,
-                    forward: false,
+                    back: false, 
+                    forward: false, 
                     set: false
                 }
 
@@ -374,7 +374,7 @@ BrowserHistory = (function() {
                     // clearInterval(this.locationTimer);
                     handleBackButton();
                 }
-
+                
                 // first check to see if we could have gone forward. We always halt on
                 // a no-hash item.
                 if (forwardStack.length > 0) {
@@ -391,10 +391,10 @@ BrowserHistory = (function() {
                         handleBackButton();
                     }
                 }
-
+                
                 if (!urlActions.back && !urlActions.forward) {
                     var foundInStacks = {
-                        back: -1,
+                        back: -1, 
                         forward: -1
                     }
 
@@ -430,9 +430,9 @@ BrowserHistory = (function() {
     }
 
     var _initialize = function () {
-
+        
         browserHasHashChange = ("onhashchange" in document.body);
-
+        
         if (browser.ie)
         {
             var scripts = document.getElementsByTagName('script');
@@ -447,7 +447,7 @@ BrowserHistory = (function() {
             var iframe = document.createElement("iframe");
             iframe.id = 'ie_historyFrame';
             iframe.name = 'ie_historyFrame';
-            iframe.src = 'javascript:false;';
+            iframe.src = 'javascript:false;'; 
 
             try {
                 document.body.appendChild(iframe);
@@ -488,32 +488,32 @@ BrowserHistory = (function() {
             }
         }
 
-        if (browserHasHashChange)
+        if (browserHasHashChange)        
             document.body.onhashchange = hashChangeHandler;
     }
 
     return {
-        historyHash: historyHash,
-        backStack: function() { return backStack; },
-        forwardStack: function() { return forwardStack },
-        getPlayer: getPlayer,
+        historyHash: historyHash, 
+        backStack: function() { return backStack; }, 
+        forwardStack: function() { return forwardStack }, 
+        getPlayer: getPlayer, 
         initialize: function(src) {
             _initialize(src);
-        },
+        }, 
         setURL: function(url) {
             document.location.href = url;
-        },
+        }, 
         getURL: function() {
             return document.location.href;
-        },
+        }, 
         getTitle: function() {
             return document.title;
-        },
+        }, 
         setTitle: function(title) {
             try {
                 backStack[backStack.length - 1].title = title;
             } catch(e) { }
-            //if on safari, set the title to be the empty string.
+            //if on safari, set the title to be the empty string. 
             if (browser.safari) {
                 if (title == "") {
                     try {
@@ -525,7 +525,7 @@ BrowserHistory = (function() {
                 }
             }
             document.title = title;
-        },
+        }, 
         setDefaultURL: function(def)
         {
             defaultHash = def;
@@ -561,8 +561,8 @@ BrowserHistory = (function() {
                 }
                 setInterval(checkForUrlChange, 50);
             }
-
-
+            
+            
             if (browser.firefox || browser.opera)
             {
                 var reg = new RegExp("#" + def + "$");
@@ -574,7 +574,7 @@ BrowserHistory = (function() {
                 setInterval(checkForUrlChange, 50);
             }
 
-        },
+        }, 
 
         /* Set the current browser URL; called from inside BrowserManager to propagate
          * the application state out to the container.
@@ -597,14 +597,14 @@ BrowserHistory = (function() {
                addHistoryEntry(baseUrl, newUrl, flexAppUrl);
                currentHistoryLength = history.length;
            }
-        },
+        }, 
 
         browserURLChange: function(flexAppUrl) {
             var objectId = null;
             if (browser.ie && currentObjectId != null) {
                 objectId = currentObjectId;
             }
-
+            
             if (typeof BrowserHistory_multiple != "undefined" && BrowserHistory_multiple == true) {
                 var pl = getPlayers();
                 for (var i = 0; i < pl.length; i++) {
@@ -657,7 +657,7 @@ function goForwardOrBackInHistory(step)
 
 //BrowserHistoryUtils.addEvent(window, "load", function() { BrowserHistory.initialize(); });
 (function(i) {
-    var u =navigator.userAgent;var e=/*@cc_on!@*/false;
+    var u =navigator.userAgent;var e=/*@cc_on!@*/false; 
     var st = setTimeout;
     if(/webkit/i.test(u)){
         st(function(){

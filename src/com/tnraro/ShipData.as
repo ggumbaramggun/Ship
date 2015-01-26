@@ -28,21 +28,21 @@ public class ShipData {
             s.build(k);
             
             datas.push(k);
-            keys[s.name] = ships.push(s)-1;
+            keys[s.type] = ships.push(s)-1;
         }
     }
 
     /**
      * clone Ship
-     * @param name
+     * @param type
      * @return Ship
      */
-    public static function getShip(name:String):Ship{
-        return ships[ keys[name] ].clone();
+    public static function getShip(type:String):Ship{
+        return ships[ keys[type] ].clone();
     }
     
-    public static function getShipData(name:String):Object{
-        return datas[ keys[name] ];
+    public static function getShipData(type:String):Object{
+        return datas[ keys[type] ];
     }
 }
 }

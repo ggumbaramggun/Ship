@@ -16,5 +16,9 @@ import com.tnraro.ships.ShipList;
 		public function add(s:Ship):void{
 			ships.push(s);
 		}
+		
+		public function toString():String{
+			return "Controller(ASD)";
+		}
 	}
 }

@@ -12,8 +12,9 @@ public class Iterator extends Proxy{
      * 반복자
      * @param o 반복시킬 대상 객채입니다.
      * @param propertyName 접근할 속성을 선택합니다. (기본값은 null입니다.)
+     * @param property 연결할 속성입니다.
      */
-    public function Iterator(o:*, propertyName:String=null) {
+    public function Iterator(o:*, propertyName:String=null, property:String='comp') {
         var v:*;
         if(propertyName == null){
             _ = o.concat();
@@ -21,7 +22,7 @@ public class Iterator extends Proxy{
             _ = [];
 
             for each(v in o){
-                _.push(v.comp(propertyName));
+                _.push(v[property](propertyName));
             }
         }
     }

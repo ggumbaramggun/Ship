@@ -3,6 +3,7 @@
  */
 package com.tnraro.activity {
 import com.tnraro.Controller;
+import com.tnraro.ShipData;
 import com.tnraro.ships.Ship;
 
 public class InGame {
@@ -18,11 +19,15 @@ public class InGame {
         for each(var t:Object in info.teams){
             var c:Controller = new Controller();
             
-            for each(var s:String in t){
-                var s:Ship = new Ship();
+            for each(var ship:Object in t.ships){
+                var s:Ship = ShipData.getShip(ship.type);
+
+                s.own = (info.id == ship.own);
+                trace(s);
                 
                 c.add(s);
             }
+            trace(c);
             
             teams.push(c);
         }

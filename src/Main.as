@@ -32,7 +32,24 @@ public class Main extends Sprite {
         inGame = new InGame();
         
         // dev
-        inGame.init();
+        inGame.init({
+            id:'didghwls03',
+            teams:[
+                {ships:[
+                    {
+                        type:'destroyer',
+                        own:'didghwls03'
+                    },
+                    {
+                        type:'destroyer',
+                        own:'noraji'
+                    }
+                ]}
+            ],
+            map:{
+                name:'python'
+            }
+        });
         inGame.free();
     }
 }
