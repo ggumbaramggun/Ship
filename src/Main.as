@@ -1,5 +1,6 @@
 package {
 import com.tnraro.Controller;
+import com.tnraro.ships.ShipError;
 
 import flash.display.Sprite;
 import flash.events.Event;
@@ -11,7 +12,7 @@ import flash.events.Event;
 public class Main extends Sprite {
     private var controller:Controller;
 
-    [Embed(source = "com/tnraro/shipmaps/ships.json", mimeType = "application/octet-stream")]
+    [Embed(source = "embeds/ships.json", mimeType = "application/octet-stream")]
     private var ShipData:Class;
 
     public function Main() {
@@ -21,7 +22,11 @@ public class Main extends Sprite {
     }
 
     public function init():void {
-        controller.addShips(new ShipData().toString());
+        try{
+            controller.addShips(new ShipData().toString());
+        }catch(e:ShipError){
+            trace('ShipError #'+e.errorID, e.message);
+        }
     }
 }
 }

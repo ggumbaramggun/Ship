@@ -1,15 +1,16 @@
 package com.tnraro.ships 
 {
-	import flash.geom.Point;
-	/**
+import com.tnraro.parts.Tile;
+
+/**
 	 * ...
 	 * @author admin@tnraro.com
 	 */
 	public class ShipMap {
-		public var tiles:Vector.<Vector.<Point>>;
+		public var tiles:Vector.<Vector.<Tile>>;
 		
 		public function ShipMap() {
-			tiles = new Vector.<Vector.<Point>>();
+			tiles = new Vector.<Vector.<Tile>>();
 		}
 		
 		/**
@@ -21,12 +22,12 @@ package com.tnraro.ships
 			for(var i:String in d.floors){
 				var f:Array = d.floors[i];
 				
-				tiles.push(new Vector.<Point>());
+				tiles.push(new Vector.<Tile>());
 				
 				for each(var s:String in f) {
 					var a:Array = s.split(',');
 					
-					tiles[i].push(new Point(a[0], a[1]));
+					tiles[i].push(new Tile(a[0], a[1]));
 				}
 			}
 			

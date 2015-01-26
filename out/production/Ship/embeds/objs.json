@@ -1,0 +1,15 @@
+{
+	"-1":{
+		"name":"blocked"
+	},
+	"0":{
+		"name":"null"
+	},
+	"1":{
+		"name":"rocket",
+		"type":"turret",
+		"columns":{
+			"mess":"loli"
+		}
+	}
+}
